@@ -1,16 +1,137 @@
-# React + Vite
+# 🚀 Roxicons
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Roxicons** is a modern, AI-ready icon platform built with React, Tailwind, and Motion.
+It provides a beautiful UI to explore, search, and interact with icons — inspired by platforms like Boxicons but enhanced with animations and modern UX.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## ✨ Features
 
-## React Compiler
+* 🎨 Modern SaaS UI (Glassmorphism + Gradient + Bento Grid)
+* 🔍 Icon Search & Filter (Frontend ready)
+* 🧩 Interactive Icon Grid (Copy on click)
+* ⚡ Smooth animations using Motion
+* 🖱️ Custom Figma-style cursor with particle effects
+* 🌙 Dark mode support
+* 📱 Fully responsive design
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## 🛠️ Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+* **Frontend:** React (Vite)
+* **Styling:** Tailwind CSS
+* **UI Components:** shadcn/ui
+* **Animations:** Motion
+* **Icons:** Lucide
+* **Deployment:** Vercel / AWS (S3 + CloudFront)
+
+---
+
+## 📁 Project Structure
+
+```
+src/
+ ├── components/
+ │   ├── Navbar.jsx
+ │   ├── Hero.jsx
+ │   ├── BentoGrid.jsx
+ │   ├── IconGrid.jsx
+ │   ├── IconCard.jsx
+ │   ├── CustomCursor.jsx
+ │   └── Footer.jsx
+ ├── pages/
+ │   └── Home.jsx
+ ├── data/
+ │   └── icons.js
+ ├── App.jsx
+ └── main.jsx
+```
+
+---
+
+## ⚙️ Getting Started
+
+### 1. Clone the repo
+
+```bash
+git clone https://github.com/YOUR_USERNAME/roxicons.git
+cd roxicons
+```
+
+### 2. Install dependencies
+
+```bash
+npm install
+```
+
+### 3. Run the app
+
+```bash
+npm run dev
+```
+
+---
+
+## 🚀 Build for Production
+
+```bash
+npm run build
+```
+
+---
+
+## 🌐 Deployment
+
+### Option 1: Vercel (Recommended)
+
+* Connect your GitHub repo
+* Auto deploy on push
+
+### Option 2: AWS
+
+* Upload `/dist` to S3
+* Use CloudFront for CDN
+
+---
+
+## 🔄 Dev Workflow
+
+* `main` → production
+* `dev` → development
+* `feature/*` → new features
+
+Example:
+
+```bash
+git checkout -b feature/icon-search
+```
+
+---
+
+## 🔮 Future Roadmap
+
+* 🔐 User authentication
+* ❤️ Save favorite icons
+* 🤖 AI-powered icon search
+* 🎨 Icon customization (color, stroke, size)
+* 📦 Export as SVG / React components
+* 🌐 Public API for developers
+
+---
+
+## 👨‍💻 Author
+
+**Lead Developer:** @abhas101
+
+---
+
+## ⭐ Support
+
+If you like this project, consider giving it a ⭐ on GitHub!
+
+---
+
+## 📄 License
+
+MIT License
