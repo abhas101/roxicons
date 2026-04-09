@@ -1,11 +1,16 @@
-import { motion } from "motion/react";
+import { motion, useScroll, useTransform } from "motion/react";
 import { useState } from "react";
 
 const BentoCard = ({ title, children, className = "" }) => {
   const [pos, setPos] = useState({ x: 0, y: 0 });
 
+  // 🔥 Parallax scroll effect
+  const { scrollYProgress } = useScroll();
+  const y = useTransform(scrollYProgress, [0, 1], [0, -30]);
+
   return (
     <motion.div
+      style={{ y }}
       onMouseMove={(e) => {
         const rect = e.currentTarget.getBoundingClientRect();
         setPos({
@@ -13,18 +18,26 @@ const BentoCard = ({ title, children, className = "" }) => {
           y: e.clientY - rect.top,
         });
       }}
-      whileHover={{ scale: 1.03, y: -8 }}
+      initial={{ opacity: 0, y: 60 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-100px" }}
+      whileHover={{
+        scale: 1.03,
+        y: -10,
+        rotateX: 4,
+        rotateY: -4,
+      }}
       transition={{ type: "spring", stiffness: 200, damping: 15 }}
       className={`relative p-6 rounded-3xl overflow-hidden
       bg-white/70 dark:bg-white/5 
       backdrop-blur border border-gray-200 dark:border-white/10
-      shadow-xl min-h-55 group ${className}`}
+      shadow-xl min-h-[220px] group ${className}`}
     >
-      {/* Mouse Glow */}
+      {/* ✨ Mouse Glow */}
       <div
-        className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition"
+        className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-300"
         style={{
-          background: `radial-gradient(300px circle at ${pos.x}px ${pos.y}px, rgba(168,85,247,0.2), transparent 40%)`,
+          background: `radial-gradient(250px circle at ${pos.x}px ${pos.y}px, rgba(168,85,247,0.25), transparent 60%)`,
         }}
       />
 
@@ -46,24 +59,40 @@ export default function BentoGrid() {
         <div className="relative h-32 flex items-center">
           <motion.div
             initial={{ width: 0 }}
-            animate={{ width: "100%" }}
-            transition={{ duration: 1.5, ease: "easeInOut" }}
+            whileInView={{ width: "100%" }}
+            transition={{ duration: 1.2 }}
             className="h-[2px] bg-purple-400"
           />
         </div>
       </BentoCard>
 
-      {/* CARD 2 - Orbit */}
+      {/* CARD 2 - Orbit (Improved) */}
       <BentoCard title="Icon Packs">
         <div className="relative flex justify-center items-center h-32">
+
+          {/* Orbit ring */}
           <motion.div
             animate={{ rotate: 360 }}
-            transition={{ repeat: Infinity, duration: 8, ease: "linear" }}
+            transition={{ repeat: Infinity, duration: 12, ease: "linear" }}
             className="absolute w-28 h-28 border border-white/10 rounded-full"
           />
 
+          {/* Orbit dots */}
+          {[...Array(5)].map((_, i) => (
+            <motion.div
+              key={i}
+              className="absolute w-2 h-2 bg-white/30 rounded-full"
+              style={{
+                top: "50%",
+                left: "50%",
+                transform: `rotate(${i * 72}deg) translate(50px)`,
+              }}
+            />
+          ))}
+
+          {/* Center pulse */}
           <motion.div
-            animate={{ scale: [1, 1.2, 1] }}
+            animate={{ scale: [1, 1.3, 1] }}
             transition={{ repeat: Infinity, duration: 2 }}
             className="w-6 h-6 bg-lime-400 rounded-full z-10"
           />
@@ -87,12 +116,16 @@ export default function BentoGrid() {
         </div>
       </BentoCard>
 
-      {/* CARD 4 - Wide Gradient */}
+      {/* CARD 4 - Gradient (FIXED) */}
       <BentoCard title="Design Faster" className="md:col-span-2">
         <motion.div
-          animate={{ backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"] }}
-          transition={{ repeat: Infinity, duration: 6 }}
-          className="h-32 rounded-xl bg-linear-to-r from-blue-500/20 via-purple-500/20 to-blue-500/20 bg-size-[200%_200%]"
+          animate={{
+            backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
+          }}
+          transition={{ repeat: Infinity, duration: 8 }}
+          className="h-32 rounded-xl bg-gradient-to-r 
+          from-blue-500/20 via-purple-500/20 to-blue-500/20 
+          bg-[length:200%_200%]"
         />
       </BentoCard>
 

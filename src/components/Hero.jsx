@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Button } from "./ui/button";
 
 export default function Hero() {
   return (
@@ -14,11 +15,7 @@ export default function Hero() {
       <p className="text-gray-400 mb-8">
         Discover, customize and export icons instantly.
       </p>
-
-      <input
-        placeholder="Search icons..."
-        className="w-full max-w-xl px-4 py-3 rounded-lg bg-gray-900 border border-gray-700 text-white"
-      />
+      <Button className="mt-6">Get Started</Button>
     </section>
   );
 }
