@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Button } from "./ui/button";
+import { Link } from "react-router-dom";
 
 export default function Hero() {
   return (
@@ -15,7 +16,8 @@ export default function Hero() {
       <p className="text-gray-400 mb-8">
         Discover, customize and export icons instantly.
       </p>
-      <Button className="mt-6">Get Started</Button>
+      <Link to="/icons"><Button className="mt-6">Icons</Button></Link>
+      <Link to="https://www.linkedin.com/in/abhas101/" target="_blank"> <Button className="cursor-grab">Connect Now</Button></Link>
     </section>
   );
 }
