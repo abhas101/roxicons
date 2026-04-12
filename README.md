@@ -55,7 +55,7 @@ src/
 ### 1. Clone the repo
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/roxicons.git
+git clone https://github.com/abhas101/roxicons.git
 cd roxicons
 ```
 
