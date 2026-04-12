@@ -83,15 +83,7 @@ npm run build
 
 ## 🌐 Deployment
 
-### Option 1: Vercel (Recommended)
-
-* Connect your GitHub repo
-* Auto deploy on push
-
-### Option 2: AWS
-
-* Upload `/dist` to S3
-* Use CloudFront for CDN
+ AWS - Amplify
 
 ---
 
